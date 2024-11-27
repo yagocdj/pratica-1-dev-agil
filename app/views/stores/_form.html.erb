@@ -1,0 +1,34 @@
+<%= form_with(model: store) do |form| %>
+  <% if store.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
+
+      <ul>
+        <% store.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <%= form.fields_for :manager do |manager_fields| %>
+    <div class="field">
+      <%= manager_fields.label "Manager's name", style: "display: block" %>
+      <%= manager_fields.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= manager_fields.label "Manager's birth date", style: "display: block" %>
+      <%= manager_fields.date_field :birth_date %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
