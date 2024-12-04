@@ -1,7 +1,6 @@
-<div id="<%= dom_id store %>">
-  <p>
-    <strong>Name:</strong>
-    <%= store.name %>
-  </p>
-
-</div>
+<tr id="<%= dom_id store %>">
+  <th scope="row"><%=store.id%></th>
+  <td><%=store.name%></td>
+  <td><%=store.manager.name%></td>
+  <td><%= link_to "Details", store %></td>
+</tr>

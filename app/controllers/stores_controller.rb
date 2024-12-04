@@ -26,7 +26,7 @@ class StoresController < ApplicationController
 
     respond_to do |format|
       if @store.save
-        format.html { redirect_to @store, notice: "Store was successfully created." }
+        format.html { redirect_to root_path, notice: "Store was successfully created." }
         format.json { render :show, status: :created, location: @store }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -50,8 +50,9 @@ class StoresController < ApplicationController
 
   # DELETE /stores/1 or /stores/1.json
   def destroy
+    @store.manager.destroy
     @store.destroy
-
+    
     respond_to do |format|
       format.html { redirect_to stores_path, status: :see_other, notice: "Store was successfully destroyed." }
       format.json { head :no_content }
