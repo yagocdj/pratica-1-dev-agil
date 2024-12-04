@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2024_11_27_215600) do
   create_table "contacts", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "contact_type", null: false
     t.string "value", null: false
     t.integer "store_id", null: false
     t.datetime "created_at", null: false
