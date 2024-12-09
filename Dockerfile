@@ -1,4 +1,4 @@
-FROM ruby:3.0.0
+FROM ruby:3.1.4
 
 LABEL Version="1.0"
 LABEL Name="App"

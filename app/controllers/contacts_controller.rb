@@ -13,6 +13,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+    @stores = Store.all
   end
 
   # GET /contacts/1/edit

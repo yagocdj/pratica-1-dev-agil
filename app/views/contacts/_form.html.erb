@@ -21,9 +21,10 @@
     <%= form.text_field :value %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :store_id, style: "display: block" %>
-    <%= form.text_field :store_id %>
+    <!-- <%= form.text_field :store_id %> -->
+    <%= collection_select(:store, :store_id, @stores, :id, :name) %>
   </div>
 
   <div>
