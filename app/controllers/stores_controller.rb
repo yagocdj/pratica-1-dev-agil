@@ -68,6 +68,7 @@ class StoresController < ApplicationController
     # Only allow a list of trusted parameters through.
     def store_params
       params.require(:store).permit(:name,
-        manager_attributes: %i[id name birth_date])
+        manager_attributes: %i[id name birth_date],
+        contacts_attributes: %i[id contact_type contact_value])
     end
 end

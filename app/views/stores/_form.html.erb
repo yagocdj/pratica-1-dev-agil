@@ -1,4 +1,5 @@
-<%= form_with(model: store) do |form| %>
+<%= form_with(model: store, data: { controller: 'nested-form',
+    nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |form| %>
   <% if store.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
@@ -28,6 +29,24 @@
     </div>
   <% end %>
 
+
+  <%# Start Custom logic here %>
+  <%# template - non rendered HTML %>
+  <template data-nested-form-target="template">
+    <%= form.fields_for :contacts, Contact.new, child_index: 'NEW_RECORD' do |contact_fields| %>
+      <%= render 'contact_form', f: contact_fields %>
+    <% end %>
+  </template>
+
+  <%= form.fields_for :contacts do |contact_fields| %>
+    <%= render "contact_form", f: contact_fields %>
+  <% end %>
+  <%# End Custom logic here %>
+
+  <!-- Inserted elements will be injected before that target. -->
+  <div data-nested-form-target="target"></div>
+  <button type="button" data-action="nested-form#add">Add contact</button>
+  
   <div>
     <%= form.submit %>
   </div>
