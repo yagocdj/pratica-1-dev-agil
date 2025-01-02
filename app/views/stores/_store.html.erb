@@ -14,6 +14,15 @@
     <%= store.manager.birth_date %>
   </p>
 
-  <!-- TODO - list all store's contacts -->
+  <p>
+    <strong>Store's contacts:</strong>
+    <ul>
+      <% store.contacts.each do |contact| %>
+        <li><%=contact.contact_type%></li>
+        <li><%=contact.contact_value%></li>
+        <hr>
+      <% end %>
+    </ul>
+  </p>
 
 </div>

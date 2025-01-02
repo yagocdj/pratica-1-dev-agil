@@ -51,6 +51,7 @@ class StoresController < ApplicationController
   # DELETE /stores/1 or /stores/1.json
   def destroy
     @store.manager.destroy
+    @store.contacts.destroy_all
     @store.destroy
     
     respond_to do |format|
@@ -69,6 +70,6 @@ class StoresController < ApplicationController
     def store_params
       params.require(:store).permit(:name,
         manager_attributes: %i[id name birth_date],
-        contacts_attributes: %i[id contact_type contact_value])
+        contacts_attributes: %i[id contact_type contact_value _destroy])
     end
 end

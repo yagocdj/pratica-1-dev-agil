@@ -71,5 +71,7 @@ group :test do
 
 end
 
+gem 'pry-rails'
+
 gem 'bootstrap'
 gem 'sassc-rails'
